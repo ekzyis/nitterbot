@@ -12,7 +12,7 @@ import (
 
 var (
 	TwitterUrlRegexp = regexp.MustCompile(`^(?:https?:\/\/)?((www\.)?(twitter|x)\.com)\/`)
-	NitterUrls       = []string{"nitter.net", "nitter.it"}
+	NitterUrls       = []string{"nitter.net", "nitter.it", "nitter.cz"}
 )
 
 func WaitUntilNext(d time.Duration) {
