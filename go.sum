@@ -1,0 +1,14 @@
+github.com/ekzyis/sn-goapi v0.2.0 h1:k5YJlG+OguQEQRlbS5KghUttbfJaEkfvIfqB8B133FY=
+github.com/ekzyis/sn-goapi v0.2.0/go.mod h1:FObbYr/NXgnXNWU+EwiWKoWQy+wAaRS6AoW3NgsJ/Oo=
+github.com/ekzyis/sn-goapi v0.2.1-0.20230823005215-5fb6668b6270 h1:aVDLDhrRsxP+if+ujCOpydFapeei2YL47Cp1ghgbJ2I=
+github.com/ekzyis/sn-goapi v0.2.1-0.20230823005215-5fb6668b6270/go.mod h1:FObbYr/NXgnXNWU+EwiWKoWQy+wAaRS6AoW3NgsJ/Oo=
+github.com/ekzyis/sn-goapi v0.2.1-0.20230823015232-6a259372b331 h1:NpCmANlADOcRYxKe3GfaYcfra2fjTpW65M36Dq65LX8=
+github.com/ekzyis/sn-goapi v0.2.1-0.20230823015232-6a259372b331/go.mod h1:FObbYr/NXgnXNWU+EwiWKoWQy+wAaRS6AoW3NgsJ/Oo=
+github.com/ekzyis/sn-goapi v0.3.0 h1:pXRbD2iAMHvUC/+gZKXPRwInP4PuABEC1qQc+DWARlE=
+github.com/ekzyis/sn-goapi v0.3.0/go.mod h1:FObbYr/NXgnXNWU+EwiWKoWQy+wAaRS6AoW3NgsJ/Oo=
+github.com/joho/godotenv v1.5.1 h1:7eLL/+HRGLY0ldzfGMeQkb7vMd0as4CfYvUVzLqw0N0=
+github.com/joho/godotenv v1.5.1/go.mod h1:f4LDr5Voq0i2e/R5DDNOoa2zzDfwtkZa6DnEwAbqwq4=
+github.com/mattn/go-sqlite3 v1.14.17 h1:mCRHCLDUBXgpKAqIKsaAaAsrAlbkeomtRFKXh2L6YIM=
+github.com/mattn/go-sqlite3 v1.14.17/go.mod h1:2eHXhiwb8IkHr+BDWZGa96P6+rkvnG63S2DGjv9HUNg=
+github.com/namsral/flag v1.7.4-pre h1:b2ScHhoCUkbsq0d2C15Mv+VU8bl8hAXV8arnWiOHNZs=
+github.com/namsral/flag v1.7.4-pre/go.mod h1:OXldTctbM6SWH1K899kPZcf65KxJiD7MsceFUpB5yDo=
