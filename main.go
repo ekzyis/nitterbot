@@ -58,6 +58,7 @@ func main() {
 		log.Println("fetching items ...")
 		r, err := sn.Items(&sn.ItemsQuery{Sort: "recent", Limit: 21})
 		if err != nil {
+			log.Println(err)
 			SendToNostr(fmt.Sprint(err))
 			WaitUntilNext(time.Minute)
 			continue
@@ -79,6 +80,7 @@ func main() {
 				comment += "Click [here](https://github.com/zedeus/nitter) for more information._"
 				cId, err := sn.CreateComment(item.Id, comment)
 				if err != nil {
+					log.Println(err)
 					SendToNostr(fmt.Sprint(err))
 					continue
 				}
