@@ -1,14 +1,4 @@
-github.com/ekzyis/sn-goapi v0.2.0 h1:k5YJlG+OguQEQRlbS5KghUttbfJaEkfvIfqB8B133FY=
-github.com/ekzyis/sn-goapi v0.2.0/go.mod h1:FObbYr/NXgnXNWU+EwiWKoWQy+wAaRS6AoW3NgsJ/Oo=
-github.com/ekzyis/sn-goapi v0.2.1-0.20230823005215-5fb6668b6270 h1:aVDLDhrRsxP+if+ujCOpydFapeei2YL47Cp1ghgbJ2I=
-github.com/ekzyis/sn-goapi v0.2.1-0.20230823005215-5fb6668b6270/go.mod h1:FObbYr/NXgnXNWU+EwiWKoWQy+wAaRS6AoW3NgsJ/Oo=
-github.com/ekzyis/sn-goapi v0.2.1-0.20230823015232-6a259372b331 h1:NpCmANlADOcRYxKe3GfaYcfra2fjTpW65M36Dq65LX8=
-github.com/ekzyis/sn-goapi v0.2.1-0.20230823015232-6a259372b331/go.mod h1:FObbYr/NXgnXNWU+EwiWKoWQy+wAaRS6AoW3NgsJ/Oo=
-github.com/ekzyis/sn-goapi v0.3.0 h1:pXRbD2iAMHvUC/+gZKXPRwInP4PuABEC1qQc+DWARlE=
-github.com/ekzyis/sn-goapi v0.3.0/go.mod h1:FObbYr/NXgnXNWU+EwiWKoWQy+wAaRS6AoW3NgsJ/Oo=
-github.com/ekzyis/sn-goapi v0.3.1-0.20230827213658-0ee21b998335 h1:Zl30HHHnM2LU0yXrrUUAGEGcSuoJXFcSt9ez0/tVPLI=
-github.com/ekzyis/sn-goapi v0.3.1-0.20230827213658-0ee21b998335/go.mod h1:FObbYr/NXgnXNWU+EwiWKoWQy+wAaRS6AoW3NgsJ/Oo=
-github.com/ekzyis/sn-goapi v0.3.1 h1:Cz/f7/yXMqnZNosRl4TRD3VHfxxkhKsKYCN7SwJc9ck=
+github.com/ekzyis/sn-goapi v0.3.1 h1:IAlbqksX6Vjj25aDFZxml0pAmHgqWDsK3gTYEiIKCcs=
 github.com/ekzyis/sn-goapi v0.3.1/go.mod h1:FObbYr/NXgnXNWU+EwiWKoWQy+wAaRS6AoW3NgsJ/Oo=
 github.com/joho/godotenv v1.5.1 h1:7eLL/+HRGLY0ldzfGMeQkb7vMd0as4CfYvUVzLqw0N0=
 github.com/joho/godotenv v1.5.1/go.mod h1:f4LDr5Voq0i2e/R5DDNOoa2zzDfwtkZa6DnEwAbqwq4=
