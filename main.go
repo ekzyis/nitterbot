@@ -12,7 +12,41 @@ import (
 
 var (
 	TwitterUrlRegexp = regexp.MustCompile(`^(?:https?:\/\/)?((www\.)?(twitter|x)\.com)\/`)
-	NitterUrls       = []string{"nitter.net", "nitter.it", "nitter.cz"}
+	// references:
+	// - https://github.com/zedeus/nitter/wiki/Instances
+	// - https://status.d420.de/
+	NitterClearnetUrls = []string{
+		"nitter.net",
+		"nitter.it",
+		"nitter.cz",
+		"nitter.at",
+		"nitter.unixfox.eu",
+		"nitter.poast.org",
+		"nitter.privacydev.net",
+		"nitter.d420.de",
+		"nitter.sethforprivacy.com",
+		"nitter.nicfab.eu",
+		"bird.habedieeh.re",
+		"nitter.salastil.com",
+		"nt.ggtyler.dev",
+	}
+	NitterOnionUrls = []string{
+		"nitter7bryz3jv7e3uekphigvmoyoem4al3fynerxkj22dmoxoq553qd.onion",
+		"26oq3gioiwcmfojub37nz5gzbkdiqp7fue5kvye7d4txv4ny6fb4wwid.onion",
+		"vfaomgh4jxphpbdfizkm5gbtjahmei234giqj4facbwhrfjtcldauqad.onion",
+		"nitraeju2mipeziu2wtcrqsxg7h62v5y4eqgwi75uprynkj74gevvuqd.onion",
+		"codeine3hsqnnkb3dsu6ft4tunlomr3lmuml5hcoqmfkgiqfv2brdqqd.onion",
+	}
+	NitterI2PUrls = []string{
+		"axd6uavsstsrvstva4mzlzh4ct76rc6zdug3nxdgeitrzczhzf4q.b32.i2p",
+		"u6ikd6zndl3c4dsdq4mmujpntgeevdk5qzkfb57r4tnfeccrn2qa.b32.i2p",
+		"gseczlzmiv23p5vhsktyd7whquq2uy3c5fgkmdohh453qp3daoua.b32.i2p",
+		"tm4rwkeysv3zz3q5yacyr4rlmca2c4etkdobfvuqzt6vsfsu4weq.b32.i2p",
+		"vernzdedoxuflrrxc4vbatbkpjh4k22ecgiqgimdiif62onhagva.b32.i2p",
+	}
+	NitterLokinetUrls = []string{
+		"nitter.priv.loki/",
+	}
 )
 
 func WaitUntilNext(d time.Duration) {
@@ -71,12 +105,31 @@ func main() {
 					log.Printf("item %d already has nitter links comment\n", item.Id)
 					continue
 				}
-				comment := "Nitter links:\n\n"
-				for _, nUrl := range NitterUrls {
+				comment := "**Twitter2Nitter**\n\nClearnet:\n\n"
+				for _, nUrl := range NitterClearnetUrls {
 					nitterLink := strings.Replace(item.Url, m[1], nUrl, 1)
-					comment += nitterLink + "\n"
+					comment += fmt.Sprintf("- [%s](%s)\n", nUrl, nitterLink)
 				}
-				comment += "\n_Nitter is a free and open source alternative Twitter front-end focused on privacy and performance. "
+				comment = strings.TrimRight(comment, "| ")
+				comment += "\n\nTor:\n\n"
+				for _, nUrl := range NitterOnionUrls {
+					nitterLink := strings.Replace(item.Url, m[1], nUrl, 1)
+					nitterLink = strings.Replace(nitterLink, "https://", "http://", 1)
+					comment += fmt.Sprintf("- [%s](%s)\n", nUrl, nitterLink)
+				}
+				comment += "\nI2P:\n\n"
+				for _, nUrl := range NitterI2PUrls {
+					nitterLink := strings.Replace(item.Url, m[1], nUrl, 1)
+					nitterLink = strings.Replace(nitterLink, "https://", "http://", 1)
+					comment += fmt.Sprintf("- [%s](%s)\n", nUrl, nitterLink)
+				}
+				comment += "\nLokinet:\n\n"
+				for _, nUrl := range NitterLokinetUrls {
+					nitterLink := strings.Replace(item.Url, m[1], nUrl, 1)
+					nitterLink = strings.Replace(nitterLink, "https://", "http://", 1)
+					comment += fmt.Sprintf("- [%s](%s)\n", nUrl, nitterLink)
+				}
+				comment += "\n\n_Nitter is a free and open source alternative Twitter front-end focused on privacy and performance. "
 				comment += "Click [here](https://github.com/zedeus/nitter) for more information._"
 				cId, err := sn.CreateComment(item.Id, comment)
 				if err != nil {
