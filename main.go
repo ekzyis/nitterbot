@@ -105,27 +105,27 @@ func main() {
 					log.Printf("item %d already has nitter links comment\n", item.Id)
 					continue
 				}
-				comment := "**Twitter2Nitter**\n\nClearnet:\n\n"
+				comment := "**Twitter2Nitter**\n\nClearnet: "
 				for _, nUrl := range NitterClearnetUrls {
 					nitterLink := strings.Replace(item.Url, m[1], nUrl, 1)
 					comment += fmt.Sprintf("[%s](%s) | ", nUrl, nitterLink)
 				}
 				comment = strings.TrimRight(comment, "| ")
-				comment += "\n\nTor:\n\n"
+				comment += "\n\nTor: "
 				for _, nUrl := range NitterOnionUrls {
 					nitterLink := strings.Replace(item.Url, m[1], nUrl, 1)
 					nitterLink = strings.Replace(nitterLink, "https://", "http://", 1)
 					comment += fmt.Sprintf("[%s..%s](%s) | ", nUrl[:12], nUrl[len(nUrl)-12:], nitterLink)
 				}
 				comment = strings.TrimRight(comment, "| ")
-				comment += "\n\nI2P:\n\n"
+				comment += "\n\nI2P: "
 				for _, nUrl := range NitterI2PUrls {
 					nitterLink := strings.Replace(item.Url, m[1], nUrl, 1)
 					nitterLink = strings.Replace(nitterLink, "https://", "http://", 1)
 					comment += fmt.Sprintf("[%s..%s](%s) | ", nUrl[:12], nUrl[len(nUrl)-12:], nitterLink)
 				}
 				comment = strings.TrimRight(comment, "| ")
-				comment += "\n\nLokinet:\n\n"
+				comment += "\n\nLokinet: "
 				for _, nUrl := range NitterLokinetUrls {
 					nitterLink := strings.Replace(item.Url, m[1], nUrl, 1)
 					nitterLink = strings.Replace(nitterLink, "https://", "http://", 1)
