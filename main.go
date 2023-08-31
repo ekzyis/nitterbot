@@ -108,26 +108,28 @@ func main() {
 				comment := "**Twitter2Nitter**\n\nClearnet:\n\n"
 				for _, nUrl := range NitterClearnetUrls {
 					nitterLink := strings.Replace(item.Url, m[1], nUrl, 1)
-					comment += fmt.Sprintf("- [%s](%s)\n", nUrl, nitterLink)
+					comment += fmt.Sprintf("[%s](%s) | ", nUrl, nitterLink)
 				}
 				comment = strings.TrimRight(comment, "| ")
 				comment += "\n\nTor:\n\n"
 				for _, nUrl := range NitterOnionUrls {
 					nitterLink := strings.Replace(item.Url, m[1], nUrl, 1)
 					nitterLink = strings.Replace(nitterLink, "https://", "http://", 1)
-					comment += fmt.Sprintf("- [%s](%s)\n", nUrl, nitterLink)
+					comment += fmt.Sprintf("[%s..%s](%s) | ", nUrl[:12], nUrl[len(nUrl)-12:], nitterLink)
 				}
-				comment += "\nI2P:\n\n"
+				comment = strings.TrimRight(comment, "| ")
+				comment += "\n\nI2P:\n\n"
 				for _, nUrl := range NitterI2PUrls {
 					nitterLink := strings.Replace(item.Url, m[1], nUrl, 1)
 					nitterLink = strings.Replace(nitterLink, "https://", "http://", 1)
-					comment += fmt.Sprintf("- [%s](%s)\n", nUrl, nitterLink)
+					comment += fmt.Sprintf("[%s..%s](%s) | ", nUrl[:12], nUrl[len(nUrl)-12:], nitterLink)
 				}
-				comment += "\nLokinet:\n\n"
+				comment = strings.TrimRight(comment, "| ")
+				comment += "\n\nLokinet:\n\n"
 				for _, nUrl := range NitterLokinetUrls {
 					nitterLink := strings.Replace(item.Url, m[1], nUrl, 1)
 					nitterLink = strings.Replace(nitterLink, "https://", "http://", 1)
-					comment += fmt.Sprintf("- [%s](%s)\n", nUrl, nitterLink)
+					comment += fmt.Sprintf("[%s](%s)\n", nUrl, nitterLink)
 				}
 				comment += "\n\n_Nitter is a free and open source alternative Twitter front-end focused on privacy and performance. "
 				comment += "Click [here](https://github.com/zedeus/nitter) for more information._"
