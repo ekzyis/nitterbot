@@ -1,6 +1,6 @@
-# unpaywall
+# nitterbot
 
-This is a [Stacker News bot](https://stacker.news/unpaywall) that fetches every minute all recent posts.
+This is a [Stacker News bot](https://stacker.news/nitter) that fetches every minute all recent posts.
 
 If a post is a twitter link, it adds a comment with nitter links and stores the comment + item id in a sqlite3 database.
 
