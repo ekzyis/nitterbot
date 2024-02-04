@@ -16,19 +16,14 @@ var (
 	// - https://github.com/zedeus/nitter/wiki/Instances
 	// - https://status.d420.de/
 	NitterClearnetUrls = []string{
-		"nitter.net",
-		"nitter.it",
 		"nitter.cz",
-		"nitter.at",
+		"nitter.woodland.cafe",
 		"nitter.unixfox.eu",
-		"nitter.poast.org",
 		"nitter.privacydev.net",
-		"nitter.d420.de",
-		"nitter.sethforprivacy.com",
-		"nitter.nicfab.eu",
-		"bird.habedieeh.re",
-		"nitter.salastil.com",
-		"nt.ggtyler.dev",
+		"nitter.perennialte.ch",
+		"nitter.soopy.moe",
+		"nitter.1d4.us",
+		"nitter.adminforge.de",
 	}
 	NitterOnionUrls = []string{
 		"nitter7bryz3jv7e3uekphigvmoyoem4al3fynerxkj22dmoxoq553qd.onion",
