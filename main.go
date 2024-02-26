@@ -10,6 +10,11 @@ import (
 	"github.com/ekzyis/sn-goapi"
 )
 
+type NostrClient struct {
+	Url  string
+	Name string
+}
+
 var (
 	TwitterUrlRegexp = regexp.MustCompile(`^(?:https?:\/\/)?((www\.)?(twitter|x)\.com)\/`)
 	// references:
@@ -17,6 +22,24 @@ var (
 	// - https://status.d420.de/
 	NitterClearnetUrls = []string{
 		"nitter.privacydev.net",
+	}
+
+	// since v0.4.0, bot also replaces nostr links with nostr.com so users can pick their client
+	NostrUrlRegexp = regexp.MustCompile(
+		`^(?:https?:\/\/)?(?:www\.)?` +
+			`(?:` +
+			`primal.net\/(?:e\/)?|snort.social\/(?:e\/)?` +
+			`)((note|nevent)[a-zA-Z0-9]+)$`)
+	NostrClients = []NostrClient{
+		// list from nostr.com
+		NostrClient{"https://primal.net/e/", "primal.net"},
+		NostrClient{"https://snort.social/e/", "snort.social"},
+		NostrClient{"https://nostrudel.ninja/#/n/", "nostrudel.ninja"},
+		NostrClient{"https://satellite.earth/thread/", "satellite.earth"},
+		NostrClient{"https://coracle.social/", "coracle.social"},
+		NostrClient{"https://nostter.app/", "nostter.app"},
+		NostrClient{"https://highlighter.com/a/", "highlighter.com"},
+		NostrClient{"https://iris.to/", "iris.to"},
 	}
 )
 
@@ -94,6 +117,29 @@ func main() {
 				SaveComment(&sn.Comment{Id: cId, Text: comment, ParentId: item.Id})
 			} else {
 				log.Printf("item %d is not twitter link\n", item.Id)
+			}
+			if m := NostrUrlRegexp.FindStringSubmatch(item.Url); m != nil {
+				log.Printf("item %d is nostr link\n", item.Id)
+				if ItemHasComment(item.Id) {
+					log.Printf("item %d already has nostr links comment\n", item.Id)
+					continue
+				}
+				noteId := m[1]
+				comment := "**Nostr Client Picker**\n\n"
+				for _, client := range NostrClients {
+					comment += fmt.Sprintf("[%s](%s) | ", client.Name, client.Url+noteId)
+				}
+				comment = strings.TrimRight(comment, "| ")
+				cId, err := sn.CreateComment(item.Id, comment)
+				if err != nil {
+					log.Println(err)
+					SendToNostr(fmt.Sprint(err))
+					continue
+				}
+				log.Printf("created comment %d\n", cId)
+				SaveComment(&sn.Comment{Id: cId, Text: comment, ParentId: item.Id})
+			} else {
+				log.Printf("item %d is not nostr link\n", item.Id)
 			}
 		}
 
