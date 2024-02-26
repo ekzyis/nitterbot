@@ -28,7 +28,14 @@ var (
 	NostrUrlRegexp = regexp.MustCompile(
 		`^(?:https?:\/\/)?(?:www\.)?` +
 			`(?:` +
-			`primal.net\/(?:e\/)?|snort.social\/(?:e\/)?` +
+			`primal\.net\/(?:e\/)?` +
+			`|snort\.social\/(?:e\/)?` +
+			`|iris\.to\/` +
+			`|highlighter\.com\/(?:a\/)?` +
+			`|nostter\.app\/` +
+			`|coracle\.social\/` +
+			`|satellite\.earth\/` +
+			`|nostrudel\.ninja\/(#\/n\/)?` +
 			`)((note|nevent)[a-zA-Z0-9]+)$`)
 	NostrClients = []NostrClient{
 		// list from nostr.com
