@@ -35,7 +35,7 @@ var (
 			`|nostter\.app\/` +
 			`|coracle\.social\/` +
 			`|satellite\.earth\/` +
-			`|nostrudel\.ninja\/(#\/n\/)?` +
+			`|nostrudel\.ninja\/(?:#\/n\/)?` +
 			`)((note|nevent)[a-zA-Z0-9]+)$`)
 	NostrClients = []NostrClient{
 		// list from nostr.com
