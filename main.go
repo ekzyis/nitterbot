@@ -35,7 +35,7 @@ var (
 			`|iris\.to\/` +
 			`|highlighter\.com\/(?:a\/)?` +
 			`|nostter\.app\/` +
-			`|coracle\.social\/` +
+			`|coracle\.social\/(?:notes\/)?` +
 			`|satellite\.earth\/` +
 			`|nostrudel\.ninja\/(?:#\/n\/)?` +
 			`)((note|nevent)[a-zA-Z0-9]+)$`)
