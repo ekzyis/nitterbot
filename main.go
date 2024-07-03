@@ -21,7 +21,7 @@ var (
 	// - https://github.com/zedeus/nitter/wiki/Instances
 	// - https://status.d420.de/
 	NitterClearnetUrls = []string{
-		"nitter.privacydev.net",
+		"xcancel.com",
 	}
 
 	// since v0.4.0, bot also replaces nostr links with nostr.com so users can pick their client
