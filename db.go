@@ -15,7 +15,7 @@ var (
 
 func init() {
 	var err error
-	db, err = sql.Open("sqlite3", "unpaywall.sqlite3")
+	db, err = sql.Open("sqlite3", "nitterbot.sqlite3")
 	if err != nil {
 		log.Fatal(err)
 	}
