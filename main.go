@@ -1,13 +1,15 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"log"
+	"os"
 	"regexp"
 	"strings"
 	"time"
 
-	"github.com/ekzyis/sn-goapi"
+	sn "github.com/ekzyis/snappy"
 )
 
 type NostrClient struct {
@@ -57,41 +59,17 @@ func WaitUntilNext(d time.Duration) {
 	time.Sleep(dur)
 }
 
-func CheckNotifications() {
-	var prevHasNewNotes bool
-	for {
-		log.Println("Checking notifications ...")
-		hasNewNotes, err := sn.CheckNotifications()
-		if err != nil {
-			SendToNostr(fmt.Sprint(err))
-		} else {
-			if !prevHasNewNotes && hasNewNotes {
-				// only send on "rising edge"
-				SendToNostr("new notifications")
-				log.Println("Forwarded notifications to monitoring")
-			} else if hasNewNotes {
-				log.Println("Notifications already forwarded")
-			}
-		}
-		prevHasNewNotes = hasNewNotes
-		WaitUntilNext(time.Hour)
-	}
-}
-
-func SessionKeepAlive() {
-	for {
-		log.Println("Refresh session using GET /api/auth/session ...")
-		sn.RefreshSession()
-		WaitUntilNext(time.Hour)
-	}
-}
-
 func main() {
-	go CheckNotifications()
-	go SessionKeepAlive()
+	loadEnv()
+
+	c := sn.NewClient(
+		sn.WithBaseUrl(os.Getenv("SN_BASE_URL")),
+		sn.WithApiKey(os.Getenv("SN_API_KEY")),
+	)
+
 	for {
 		log.Println("fetching items ...")
-		r, err := sn.Items(&sn.ItemsQuery{Sort: "recent", Limit: 21})
+		r, err := c.Items(&sn.ItemsQuery{Sort: "recent", Limit: 21})
 		if err != nil {
 			log.Println(err)
 			SendToNostr(fmt.Sprint(err))
@@ -114,7 +92,7 @@ func main() {
 				comment = strings.TrimRight(comment, "| ")
 				comment += "\n\n_Nitter is a free and open source alternative Twitter front-end focused on privacy and performance. "
 				comment += "Click [here](https://github.com/zedeus/nitter) for more information._"
-				cId, err := sn.CreateComment(item.Id, comment)
+				cId, err := c.CreateComment(item.Id, comment)
 				if err != nil {
 					log.Println(err)
 					SendToNostr(fmt.Sprint(err))
@@ -137,7 +115,7 @@ func main() {
 					comment += fmt.Sprintf("[%s](%s) | ", client.Name, client.Url+noteId)
 				}
 				comment = strings.TrimRight(comment, "| ")
-				cId, err := sn.CreateComment(item.Id, comment)
+				cId, err := c.CreateComment(item.Id, comment)
 				if err != nil {
 					log.Println(err)
 					SendToNostr(fmt.Sprint(err))
@@ -152,4 +130,37 @@ func main() {
 
 		WaitUntilNext(time.Minute)
 	}
+}
+
+func loadEnv() {
+	var (
+		f   *os.File
+		s   *bufio.Scanner
+		err error
+	)
+
+	if f, err = os.Open(".env"); err != nil {
+		log.Fatalf("error opening .env: %v", err)
+	}
+	defer f.Close()
+
+	s = bufio.NewScanner(f)
+	s.Split(bufio.ScanLines)
+	for s.Scan() {
+		line := s.Text()
+		parts := strings.SplitN(line, "=", 2)
+
+		// Check if we have exactly 2 parts (key and value)
+		if len(parts) == 2 {
+			os.Setenv(parts[0], parts[1])
+		} else {
+			log.Fatalf(".env: invalid line: %s\n", line)
+		}
+	}
+
+	// Check for errors during scanning
+	if err = s.Err(); err != nil {
+		fmt.Println("error scanning .env:", err)
+	}
+
 }

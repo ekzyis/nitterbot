@@ -1,10 +1,4 @@
-github.com/ekzyis/sn-goapi v0.3.2 h1:BGY2tOD9IZD40UXUpexysWoC+eLEoUs7JRo9FQ37S6M=
-github.com/ekzyis/sn-goapi v0.3.2/go.mod h1:FObbYr/NXgnXNWU+EwiWKoWQy+wAaRS6AoW3NgsJ/Oo=
-github.com/ekzyis/sn-goapi v0.3.3 h1:5WHGLyYVPwZ12lQrRD40eM+gjWEpDdgdWTshwL8CDEE=
-github.com/ekzyis/sn-goapi v0.3.3/go.mod h1:FObbYr/NXgnXNWU+EwiWKoWQy+wAaRS6AoW3NgsJ/Oo=
-github.com/joho/godotenv v1.5.1 h1:7eLL/+HRGLY0ldzfGMeQkb7vMd0as4CfYvUVzLqw0N0=
-github.com/joho/godotenv v1.5.1/go.mod h1:f4LDr5Voq0i2e/R5DDNOoa2zzDfwtkZa6DnEwAbqwq4=
+github.com/ekzyis/snappy v0.5.2 h1:3dZyj3Kz7fV3OStllq/koL6d5qNfBRK+4UB2L3RNmiQ=
+github.com/ekzyis/snappy v0.5.2/go.mod h1:BxJwdGlCwUw0Q5pQzBr59weAIS6pkVdivBBaZkkWTSo=
 github.com/mattn/go-sqlite3 v1.14.17 h1:mCRHCLDUBXgpKAqIKsaAaAsrAlbkeomtRFKXh2L6YIM=
 github.com/mattn/go-sqlite3 v1.14.17/go.mod h1:2eHXhiwb8IkHr+BDWZGa96P6+rkvnG63S2DGjv9HUNg=
-github.com/namsral/flag v1.7.4-pre h1:b2ScHhoCUkbsq0d2C15Mv+VU8bl8hAXV8arnWiOHNZs=
-github.com/namsral/flag v1.7.4-pre/go.mod h1:OXldTctbM6SWH1K899kPZcf65KxJiD7MsceFUpB5yDo=

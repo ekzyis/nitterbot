@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/ekzyis/sn-goapi"
+	sn "github.com/ekzyis/snappy"
 	_ "github.com/mattn/go-sqlite3"
 )
 
