@@ -79,8 +79,6 @@ func main() {
 
 				log.Printf("created comment %d\n", cId)
 				SaveComment(&sn.Comment{Id: cId, Text: comment, ParentId: item.Id})
-			} else {
-				log.Printf("item %d is not twitter link\n", item.Id)
 			}
 		}
 
