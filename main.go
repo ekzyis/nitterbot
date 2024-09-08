@@ -69,7 +69,7 @@ func main() {
 
 	for {
 		log.Println("fetching items ...")
-		r, err := c.Items(&sn.ItemsQuery{Sort: "recent", Limit: 21})
+		r, err := c.Items(&sn.ItemsQuery{Sort: "recent", Limit: 100})
 		if err != nil {
 			log.Println(err)
 			SendToNostr(fmt.Sprint(err))
