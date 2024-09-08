@@ -42,7 +42,9 @@ func ItemHasComment(parentId int) bool {
 	err := db.QueryRow(`SELECT COUNT(1) FROM comments WHERE parent_id = ?`, parentId).Scan(&count)
 	if err != nil {
 		err = fmt.Errorf("error during item check: %w", err)
-		log.Fatal(err)
+		log.Println(err)
+		// pretend that item has comment to avoid duplicate comments
+		return true
 	}
 	return count > 0
 }
@@ -51,6 +53,6 @@ func SaveComment(comment *sn.Comment) {
 	_, err := db.Exec(`INSERT INTO comments(id, text, parent_id) VALUES (?, ?, ?)`, comment.Id, comment.Text, comment.ParentId)
 	if err != nil {
 		err = fmt.Errorf("error during item insert: %w", err)
-		log.Fatal(err)
+		log.Println(err)
 	}
 }
