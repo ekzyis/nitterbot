@@ -1,4 +1,4 @@
-github.com/ekzyis/snappy v0.5.2 h1:3dZyj3Kz7fV3OStllq/koL6d5qNfBRK+4UB2L3RNmiQ=
-github.com/ekzyis/snappy v0.5.2/go.mod h1:BxJwdGlCwUw0Q5pQzBr59weAIS6pkVdivBBaZkkWTSo=
+github.com/ekzyis/snappy v0.5.3 h1:Pq8b2s4WPz5gnHgCoZR2LVqArEVqWeVCyHSVZCawat4=
+github.com/ekzyis/snappy v0.5.3/go.mod h1:BxJwdGlCwUw0Q5pQzBr59weAIS6pkVdivBBaZkkWTSo=
 github.com/mattn/go-sqlite3 v1.14.17 h1:mCRHCLDUBXgpKAqIKsaAaAsrAlbkeomtRFKXh2L6YIM=
 github.com/mattn/go-sqlite3 v1.14.17/go.mod h1:2eHXhiwb8IkHr+BDWZGa96P6+rkvnG63S2DGjv9HUNg=

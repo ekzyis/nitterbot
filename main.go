@@ -44,7 +44,7 @@ func main() {
 
 	for {
 		log.Println("fetching items ...")
-		r, err := c.Items(&sn.ItemsQuery{Sort: "recent", Limit: 100})
+		r, err := c.Items(&sn.ItemsQuery{Sort: "recent", Type: "all", Limit: 100})
 		if err != nil {
 			log.Println(err)
 			SendToNostr(fmt.Sprint(err))
@@ -53,26 +53,30 @@ func main() {
 		}
 
 		for _, item := range r.Items {
-			if m := TwitterUrlRegexp.FindStringSubmatch(item.Url); m != nil {
+			var m []string
+			var comment string
+
+			if m = TwitterUrlRegexp.FindStringSubmatch(item.Url); m != nil {
+				comment = strings.Replace(item.Url, m[1], "xcancel.com", 1)
+			} else if m = TwitterUrlRegexp.FindStringSubmatch(item.Text); m != nil {
+				comment = strings.Replace(item.Text, m[1], "xcancel.com", 1)
+			}
+
+			if comment != "" {
 				log.Printf("item %d is twitter link\n", item.Id)
+
 				if ItemHasComment(item.Id) {
 					log.Printf("item %d already has nitter links comment\n", item.Id)
 					continue
 				}
-				comment := "**Twitter2Nitter**\n\nClearnet: "
-				for _, nUrl := range NitterClearnetUrls {
-					nitterLink := strings.Replace(item.Url, m[1], nUrl, 1)
-					comment += fmt.Sprintf("[%s](%s) | ", nUrl, nitterLink)
-				}
-				comment = strings.TrimRight(comment, "| ")
-				comment += "\n\n_Nitter is a free and open source alternative Twitter front-end focused on privacy and performance. "
-				comment += "Click [here](https://github.com/zedeus/nitter) for more information._"
+
 				cId, err := c.CreateComment(item.Id, comment)
 				if err != nil {
-					log.Println(err)
+					log.Println("create comment failed:", err)
 					SendToNostr(fmt.Sprint(err))
 					continue
 				}
+
 				log.Printf("created comment %d\n", cId)
 				SaveComment(&sn.Comment{Id: cId, Text: comment, ParentId: item.Id})
 			} else {
