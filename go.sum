@@ -1,5 +1,5 @@
-github.com/ekzyis/snappy v0.5.4 h1:MLHK4fLwYUneAxnlzHoTApNXqZdv8UeO0Xly9LoGYjA=
-github.com/ekzyis/snappy v0.5.4/go.mod h1:UksYI0dU0+cnzz0LQjWB1P0QQP/ghx47e4atP99a5Lk=
+github.com/ekzyis/snappy v0.8.1 h1:W0PWf8ZIOg4w5tiVjtPMDhQslibeWDKNkVfle2BfOrU=
+github.com/ekzyis/snappy v0.8.1/go.mod h1:UksYI0dU0+cnzz0LQjWB1P0QQP/ghx47e4atP99a5Lk=
 github.com/mattn/go-sqlite3 v1.14.17 h1:mCRHCLDUBXgpKAqIKsaAaAsrAlbkeomtRFKXh2L6YIM=
 github.com/mattn/go-sqlite3 v1.14.17/go.mod h1:2eHXhiwb8IkHr+BDWZGa96P6+rkvnG63S2DGjv9HUNg=
 gopkg.in/guregu/null.v4 v4.0.0 h1:1Wm3S1WEA2I26Kq+6vcW+w0gcDo44YKYD7YIEJNHDjg=
