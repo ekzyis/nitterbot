@@ -19,12 +19,7 @@ type NostrClient struct {
 
 var (
 	TwitterUrlRegexp = regexp.MustCompile(`(?:https?:\/\/)?(?:www\.)?((?:twitter|x)\.com)\/\w+\/status(?:es)?\/\d+`)
-	// references:
-	// - https://github.com/zedeus/nitter/wiki/Instances
-	// - https://status.d420.de/
-	NitterClearnetUrls = []string{
-		"xcancel.com",
-	}
+	NitterDomain     = "twiiit.com"
 )
 
 func WaitUntilNext(d time.Duration) {
@@ -57,9 +52,9 @@ func main() {
 			var comment string
 
 			if m = TwitterUrlRegexp.FindStringSubmatch(item.Url); m != nil {
-				comment = strings.Replace(m[0], m[1], "xcancel.com", 1)
+				comment = strings.Replace(m[0], m[1], NitterDomain, 1)
 			} else if m = TwitterUrlRegexp.FindStringSubmatch(item.Text); m != nil {
-				comment = strings.Replace(m[0], m[1], "xcancel.com", 1)
+				comment = strings.Replace(m[0], m[1], NitterDomain, 1)
 			}
 
 			if comment != "" {
