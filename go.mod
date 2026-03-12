@@ -1,4 +1,4 @@
-module git.ekzyis.com/ekzyis/unpaywall
+module github.com/ekzyis/nitterbot
 
 go 1.21.0
 
