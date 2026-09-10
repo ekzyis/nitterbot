@@ -12,11 +12,6 @@ import (
 	sn "github.com/ekzyis/snappy"
 )
 
-type NostrClient struct {
-	Url  string
-	Name string
-}
-
 var (
 	TwitterUrlRegexp = regexp.MustCompile(`(?:https?:\/\/)?(?:www\.)?((?:twitter|x)\.com)\/\w+\/status(?:es)?\/\d+`)
 	NitterDomain     = "twiiit.com"
@@ -42,7 +37,6 @@ func main() {
 		r, err := c.Items(&sn.ItemsQuery{Sort: "new", Type: "all", Limit: 100})
 		if err != nil {
 			log.Println(err)
-			SendToNostr(fmt.Sprint(err))
 			WaitUntilNext(time.Minute)
 			continue
 		}
@@ -68,7 +62,6 @@ func main() {
 				cId, err := c.CreateComment(item.Id, comment)
 				if err != nil {
 					log.Println("create comment failed:", err)
-					SendToNostr(fmt.Sprint(err))
 					continue
 				}
 
