@@ -51,6 +51,19 @@ func main() {
 				comment = strings.Replace(m[0], m[1], NitterDomain, 1)
 			}
 
+			if paywallLink := FindPaywalledUrl(item.Url, item.Text); paywallLink != "" {
+				if snap, err := ArchiveLink(paywallLink); err == nil {
+					comment = strings.Join(
+						[]string{
+							comment,
+						  fmt.Sprintf("Paywall link detected. Archived version: [%s](%s)", snap.Label, snap.Url),
+						}, "\n\n",
+					)
+				} else {
+					log.Println("archive lookup failed:", err)
+				}
+			}
+
 			if comment != "" {
 				log.Printf("item %d is twitter link\n", item.Id)
 
